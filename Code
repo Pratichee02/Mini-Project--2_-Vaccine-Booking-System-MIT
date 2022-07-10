@@ -1,0 +1,589 @@
+Student or Admin Page
+
+Student
+private void UserActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Student a=new Student();
+        a.setVisible(true);
+        this.dispose();
+    }                                    
+
+Admin
+    private void AdminActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        AdminLogin a=new AdminLogin();
+        a.setVisible(true);
+        this.dispose();
+    }  
+
+
+Student 
+Welcome
+
+Book a Slot
+private void BookActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Sdetails a=new Sdetails();
+        a.setVisible(true);
+        this.dispose();
+    }                                    
+
+Back 
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        UseroAdmin a=new UseroAdmin();
+        a.setVisible(true);
+        this.dispose();
+    }                                    
+
+Information
+    private void infoActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Covaxin a=new Covaxin();
+        a.setVisible(true);
+        this.dispose();
+    }      
+
+Information on Covacine
+
+Back
+private void BackActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Student a=new Student();
+        a.setVisible(true);
+        this.dispose();
+    }                                    
+
+Next
+private void NextActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Covisheild a=new Covisheild();
+        a.setVisible(true);
+        this.dispose();
+    }
+
+Information on Covisheild 
+
+Back
+private void Back1ActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        Covaxin a=new Covaxin();
+        a.setVisible(true);
+        this.dispose();
+    }                                     
+
+Next
+    private void NextActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        Compare a=new Compare();
+        a.setVisible(true);
+        this.dispose();
+    }          
+
+Information on the statistics of both 
+
+
+Student Page
+private void StudentPageActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        Student a=new Student();
+        a.setVisible(true);
+        this.dispose();
+    }                                           
+
+Back
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        Covisheild a=new Covisheild();
+        a.setVisible(true);
+        this.dispose();
+    } 
+
+
+Book a slot
+
+
+Import Statements
+import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
+import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+Back 
+private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        // going to student page
+        Student a=new Student();
+        a.setVisible(true);
+        this.dispose();
+    }
+
+Age Clause
+
+private void ageActionPerformed(java.awt.event.ActionEvent evt) {                                    
+        //constrain to be 18 years of age and above for the vaccine
+        if(Integer.parseInt(age.getText())<18)
+        {
+            JOptionPane.showMessageDialog(null, "You need to be 18 years and older to get the vaccination");
+        }
+    }
+
+
+Enrollment Number Clause
+
+ private void EnrollNoActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // check if correct 14 digit number is entered 
+        if((EnrollNo.getText()).length() !=14)
+        {
+            JOptionPane.showMessageDialog(null, "Enter your correct enrollment number");
+            EnrollNo.setText("");
+        }
+    }
+
+School Clause
+
+private void EnrollNoActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // check if correct 14 digit number is entered 
+        if((EnrollNo.getText()).length() !=14)
+        {
+            JOptionPane.showMessageDialog(null, "Enter your correct enrollment number");
+            EnrollNo.setText("");
+        }
+    } 
+
+Number Clause
+
+private void NoActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        // check if it is a 10 digit mobile numer 
+        if((No.getText()).length() !=10)
+        {
+            JOptionPane.showMessageDialog(null, "Enter your 10 digit mobile number");
+            No.setText("");
+        }
+    }
+
+Vaccination choosing 
+Center 1
+
+private void V1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        //setting the Text
+          center.setVisible(true);
+           center.setText("Center 1");
+    } 
+
+
+Center 2
+
+private void V2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        //setting the Text
+           center.setVisible(true);
+           center.setText("Center 2");
+    }
+
+Dosage 
+Dose 1
+
+private void D1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        // TODO add your handling code here:
+        DefaultComboBoxModel c = (DefaultComboBoxModel) Avail.getModel();
+          c.removeAllElements();
+          c.addElement("Select Day");
+        if(D1.isSelected() == true)
+        {
+           c.addElement("Monday");
+           c.addElement("Wednesday");
+           c.addElement("Friday");
+        }
+    } 
+
+Dose 2
+
+
+private void D2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        // TODO add your handling code here:
+        DefaultComboBoxModel c = (DefaultComboBoxModel) Avail.getModel();
+          c.removeAllElements();
+          c.addElement("Select Day");
+        if(D2.isSelected() == true)
+        {
+           c.addElement("Tuesday");
+           c.addElement("Thursday");
+           c.addElement("Saturday");
+        }
+    } 
+
+
+Booking Details
+
+private void BookingActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        
+        String Gen,School = null, vaccine, campus, avai = null;
+        //Gen = School = vaccine = campus = avai = "";
+        
+        int dose = 0,s_char, c_char,a_char,v = 0, c =0;
+        //dose = s_char = c_char=a_char = 0;
+        
+        String name = names.getText();
+        int Age = Integer.parseInt(age.getText());
+        String mobileno = No.getText();
+        String Enrollment = EnrollNo.getText();
+        
+        //saves the character to store the index of the chosen item
+        a_char = Avail.getSelectedIndex();
+        if(Avail.getSelectedIndex() == 0)
+        {
+        //placing a condition for them not selecting anything like idiots
+           JOptionPane.showMessageDialog(null, "Select a day");
+        }
+   
+        //Re-enforcing the conditions
+        else if(Age < 18)
+            age.setText("");
+        else if((EnrollNo.getText()).length() != 14)
+             EnrollNo.setText("");
+        //if((No.getText().length()) != 10)
+             //No.setText("");
+        
+        //Gender
+        if(G1.isSelected() == true)
+            Gen = "Female";
+        else if(G2.isSelected() == true)
+            Gen = "Male";
+        else if(G3.isSelected() == true)
+            Gen = "Other";
+        else 
+            JOptionPane.showMessageDialog(null, "Select your Gender");
+        
+        //Vaccination type
+        if(V1.isSelected() == true)
+        {
+            vaccine = "Covisheild";
+            v =1;
+            campus = "Center 1"; 
+            c = 1;
+        }
+        else if(V2.isSelected() == true)
+        {
+            vaccine = "Covaccine";
+            v =2;
+            campus = "Center 2";
+            c = 2;
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Select your Vaccination Type");
+        
+        //Dosage Number
+        if(D1.isSelected() == true)
+        {
+           dose = 1;
+           switch(a_char)
+           {
+               case 1: avai ="Monday"; break;
+               case 2: avai ="Wednesday"; break;
+               case 3: avai ="Friday"; break;
+           }
+               
+        }
+        else if(D2.isSelected() == true)
+        {
+           dose = 2;
+            switch(a_char)
+           {
+               case 1: avai ="Tuesday"; break;
+               case 2: avai ="Thursday"; break;
+               case 3: avai ="Saturday"; break;
+           }
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Select your Dosage");
+        //School
+        s_char = Sch.getSelectedIndex(); 
+        //saves the character to store the index of the chosen item
+        switch(s_char)
+        {
+            case 1: School = "SOE"; break;
+            case 2: School = "Management"; break;
+            case 3: School = "Manet"; break;
+            case 4: School = "ID"; break;
+            default:
+                JOptionPane.showMessageDialog(null,"Choose your school");
+        }
+        
+        
+        if(D1.isSelected()== true|| D2.isSelected() == true || s_char != 0 || V1.isSelected() == true|| V2.isSelected() == true)
+        {
+        
+            try
+           {   
+               //sql connectivity
+               //Object newInstance;
+               Class.forName("com.mysql.cj.jdbc.Driver");
+               String url = "jdbc:mysql://localhost:3306/student";
+
+               String user = "root";
+               String password ="pass";
+
+                   Connection con =  DriverManager.getConnection(url, user, password);
+                   Statement st = con.createStatement();
+                   String qr= "insert into Sdetails values('"+name+"','"+School+"',"+v+","+dose+","+c+",'"+avai+"');";
+                   //String qr="select * from Sdetails";
+                   st.executeUpdate(qr);
+                   //st.executeQuery(qr);
+                   st.close();
+                   con.close();
+
+                   Bookingconfirmation a=new Bookingconfirmation();
+                   a.setVisible(true);
+                   this.dispose();
+
+           }
+           catch(SQLException ex)
+
+           {
+               JOptionPane.showMessageDialog(null,ex.getMessage());
+           }
+           catch(ClassNotFoundException ex)
+           {
+	JOptionPane.showMessageDialog(null,ex.getMessage());
+           }
+        }
+          
+    }
+
+
+
+In SQL Database (the newly added entry)
+
+Booking Confirmation Page
+
+Student Page
+private void NextActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Student a=new Student();
+        a.setVisible(true);
+        this.dispose();
+    } 
+
+
+
+Admin
+Login Page
+
+Import 
+import javax.swing.JOptionPane;
+
+Back 
+private void BackActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        UseroAdmin s =new UseroAdmin();
+        s.setVisible(true);
+        this.dispose();
+    }  
+Login
+private void LoginActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        String id = ID.getText();
+        String p = new String(pass.getPassword());
+        
+        if(id.equals("Admin") == true)
+        {
+            if(p.equals("KLP") == true)
+            {
+                JOptionPane.showMessageDialog(null,"Login Successful.");
+                AdminBookEdit s =new AdminBookEdit();
+                s.setVisible(true);
+                this.dispose();
+            }
+            else
+                JOptionPane.showMessageDialog(null,"Incorrect Password");
+        }
+        else
+            JOptionPane.showMessageDialog(null,"Incorrect User ID");
+    }
+Incorrect UserID
+
+
+
+Incorrect Password
+
+
+Login Successful
+
+Edit Page
+
+Import Statements 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
+Back
+private void BackActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        AdminLogin a=new AdminLogin();
+        a.setVisible(true);
+        this.dispose();
+    }
+
+
+
+Check Bookings Radio Button
+
+
+private void checkActionPerformed(java.awt.event.ActionEvent evt) {                                      
+       if(check.isSelected() == true)
+        {
+            planeEdit.setVisible(false);
+            Del.setVisible(false);
+        }
+        book.setText("0");
+        
+        //Vaccine
+        int c =0;
+        if(Vac.getSelectedIndex() == 1 )
+            c = 1;
+        else if(Vac.getSelectedIndex() == 2)
+            c = 2;
+        
+        int d =0;
+        String avai= "";
+        avai = day.getSelectedItem().toString();
+        
+        switch(Dose.getSelectedIndex())
+        {
+            case 1: d = 1; break;
+            case 2: d = 2; break;
+        }
+       try
+        {  
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/student";
+            
+            String user = "root";
+            String password ="pass";
+
+            Connection con =  DriverManager.getConnection(url, user, password);
+            Statement st = con.createStatement();
+            String qr="Select count(name) from Sdetails where c = "+c+" and day='"+avai+"' and d = "+Dose.getSelectedIndex()+";";
+            //select count(name) as totalname from sdetails where v = 2 and day = 'Thursday';
+            ResultSet rs = st.executeQuery(qr);
+            while(rs.next())
+            {
+                book.setText(rs.getString("count(name)"));
+            }
+            st.close();
+            con.close();
+        }
+       catch(SQLException ex)
+        
+        {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+        catch(ClassNotFoundException ex)
+        {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }   
+    }         
+
+Show Students Radio Button
+
+private void showActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        Students.removeAllItems();
+        DefaultComboBoxModel c = (DefaultComboBoxModel) day.getModel();
+        if(show.isSelected() == true)
+        {
+            planeEdit.setVisible(true);
+            Del.setVisible(false);
+        }
+        String avai = day.getSelectedItem().toString();
+        int v = Vac.getSelectedIndex();
+        
+        Students.addItem("Select");
+       
+         try
+        {  
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/student";
+            
+            String user = "root";
+            String password ="pass";
+
+            Connection con =  DriverManager.getConnection(url, user, password);
+            Statement st = con.createStatement();
+            String qr="Select name from Sdetails where c = "+v+" and day='"+avai+"' and d = "+Dose.getSelectedIndex()+";";
+            //select name from Sdetails where c = 2 and day = 'Tuesday';
+            ResultSet rs = st.executeQuery(qr);
+            while(rs.next())
+            {
+                Students.addItem(rs.getString("name"));
+            }
+            st.close();
+            con.close();
+        }
+       catch(SQLException ex)
+        
+        {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+        catch(ClassNotFoundException ex)
+        {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+        
+    }  
+
+Delete Specific Radio Button
+
+private void delActionPerformed(java.awt.event.ActionEvent evt) {                                    
+        if(del.isSelected() == true)
+        {
+            planeEdit.setVisible(true);
+            Del.setVisible(true);
+        }
+    } 
+
+
+Delete Button when the student is not selected
+
+Delete Button when Student is selected
+
+private void DelActionPerformed(java.awt.event.ActionEvent evt) {                                    
+        
+        String s = Students.getSelectedItem().toString();
+        
+        int v = Vac.getSelectedIndex();
+        
+        int d = Dose.getSelectedIndex();
+        if(s.equals("Select") == true)
+        {
+            JOptionPane.showMessageDialog(null,"Select a student registration to refactor.");
+        }
+        else
+        {
+            try 
+           {
+               Class.forName("com.mysql.cj.jdbc.Driver");
+               String url = "jdbc:mysql://localhost:3306/student";
+
+               String user = "root";
+               String password ="pass";
+
+               Connection con =  DriverManager.getConnection(url, user, password);
+               Statement st = con.createStatement();
+               String qr="Delete from Sdetails where name ='"+s+"'and v = "+v+" and d = "+d+";";
+               //delete from Sdetails where name = 'try' and v = 1 and d = 2;
+                   st.executeUpdate(qr);
+                   st.close();
+                   con.close();
+                   JOptionPane.showMessageDialog(null,"Succesfully Deleted");
+           }
+           catch(SQLException ex)
+
+           {
+               JOptionPane.showMessageDialog(null,ex.getMessage());
+           }
+           catch(ClassNotFoundException ex)
+           {
+               JOptionPane.showMessageDialog(null,ex.getMessage());
+           }
+        }
+    }
+
+SQL Database before changes
+
+
+Changes made after the deletion of student on the SQL database
+
+
+Database
+
+
